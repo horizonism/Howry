@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.js": "/Howry/static/js/main.dd3c3975.chunk.js",
+    "main.js.map": "/Howry/static/js/main.dd3c3975.chunk.js.map",
+    "runtime-main.js": "/Howry/static/js/runtime-main.b28ceb1b.js",
+    "runtime-main.js.map": "/Howry/static/js/runtime-main.b28ceb1b.js.map",
+    "static/css/2.658248ec.chunk.css": "/Howry/static/css/2.658248ec.chunk.css",
+    "static/js/2.351e1350.chunk.js": "/Howry/static/js/2.351e1350.chunk.js",
+    "static/js/2.351e1350.chunk.js.map": "/Howry/static/js/2.351e1350.chunk.js.map",
+    "index.html": "/Howry/index.html",
+    "static/css/2.658248ec.chunk.css.map": "/Howry/static/css/2.658248ec.chunk.css.map",
+    "static/js/2.351e1350.chunk.js.LICENSE.txt": "/Howry/static/js/2.351e1350.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b28ceb1b.js",
+    "static/css/2.658248ec.chunk.css",
+    "static/js/2.351e1350.chunk.js",
+    "static/js/main.dd3c3975.chunk.js"
+  ]
+}
