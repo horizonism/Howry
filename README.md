@@ -4,10 +4,10 @@ This is my project (training actually or smth) for 'uji skema'
 ### npm i
 install dependencies
 
-### cd backend && npm run start
+### cd server && nodemon server
 run server
 
-### cd client && npm run start
+### npm run start
 run front-end ( react )
 
 <hr>
@@ -25,5 +25,7 @@ packages nor dependencies (front-end) :
 <ul>
     <li>create-react-app</li>
     <li>axios</li>
+    <li>react-bootstrap</li>
+    <li>bootstrap</li>
 </ul>
 
