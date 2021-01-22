@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
-import { Container, Jumbotron } from 'react-bootstrap'
+import './App.css'
 import Navigation from './components/Navigation'
-import Footer from './components/Footer'
 import Home from './components/Home'
+import { BrowserRouter as Router } from 'react-router-dom'
 class App extends Component{
   render(){
     return(
       <div>
-        <Navigation />
         <Home />
+        <Navigation />
       </div>
     )
   }

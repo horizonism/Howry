@@ -6,19 +6,19 @@ import logo from '../data/logo.png';
 class Navigation extends Component {
     render() {
         return (
-            <Navbar bg="light" expand='lg'>
-            <Navbar.Brand className='ml-5'>
+            <Navbar bg="light" expand='md' fixed='bottom'>
+            <Navbar.Brand>
               <img src={logo} width="50"/>
-              <span>Howry</span>
+              <span>Horizonism &copy;</span>
               </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbar"/>
     
             <Navbar.Collapse>
             <Nav className="mr-auto"></Nav>
-            <Nav className='mr-5'>
-              <Nav.Link href='/'>Home</Nav.Link>
-              <Nav.Link href='/ghosts'>Ghosts</Nav.Link>
-              <Nav.Link href='/about'>About</Nav.Link>
+            <Nav>
+              <Nav.Link href='/Howry/'>Home</Nav.Link>
+              <Nav.Link href='/Howry/ghosts'>Ghosts</Nav.Link>
+              <Nav.Link href='/Howry/about'>About</Nav.Link>
             </Nav>
             </Navbar.Collapse>
           </Navbar>
