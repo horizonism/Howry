@@ -26,6 +26,7 @@ packages nor dependencies (front-end) :
     <li>create-react-app</li>
     <li>axios</li>
     <li>react-bootstrap</li>
+    <li>react-router-dom</li>
     <li>bootstrap</li>
 </ul>
 
