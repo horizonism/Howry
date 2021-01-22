@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Navbar, Nav } from 'react-bootstrap'
-import logo from '../data/logo.png';
+import { Navbar, Nav } from 'react-bootstrap';
+import { LinkContainer as Link } from 'react-router-bootstrap'
+import logo from '../assets/logo.png';
 
 class Navigation extends Component {
     render() {
@@ -16,9 +17,15 @@ class Navigation extends Component {
             <Navbar.Collapse>
             <Nav className="mr-auto"></Nav>
             <Nav>
-              <Nav.Link href='/Howry/'>Home</Nav.Link>
-              <Nav.Link href='/Howry/ghosts'>Ghosts</Nav.Link>
-              <Nav.Link href='/Howry/about'>About</Nav.Link>
+              <Link to='/Howry/'>
+              <Nav.Link>Home</Nav.Link>
+              </Link>
+              <Link to='/Howry/ghosts'>
+              <Nav.Link>Ghosts</Nav.Link>
+              </Link>
+              <Link to='/Howry/about'>
+              <Nav.Link>About</Nav.Link>
+              </Link>
             </Nav>
             </Navbar.Collapse>
           </Navbar>

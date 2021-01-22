@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
-import { Jumbotron, Container, Row, Col, Image, Button } from 'react-bootstrap'
-
-const jumbotron = {
-    background: 'transparent'
-}
+import { Container, Row, Col, Image, Button } from 'react-bootstrap'
+import ghost from '../assets/ghost.png'
+import { LinkContainer as Link } from 'react-router-bootstrap'
 
 class Home extends Component {
     render(){
@@ -15,17 +13,17 @@ class Home extends Component {
                 <Row>
                     <Col>
                     <br/><br/><br/><br/>
-                    <h1>A Safe Place</h1>
+                    <h1 className='display-4' style={{fontWeight: 'bold'}}>A Safe Place</h1>
                     <br/>
-                    <h5><b><i>for ghost</i></b>. Sometimes i hate on people because of their works. And sometimes it's kinda hypocrite because i'd do all of their doing, like copying and stuff. The only thing that i hate of them is that they copy someone's work and pretends that they're theirs. Now, i don't know what to do, i really wonder why i create this website. Am i gonna create another weird website like in the final exam years ago?</h5>
+                    <h5 style={{wordSpacing: '8px'}} className='text-left'><span style={{fontSize: '28px'}}><b><i>for ghost</i></b></span>. this is a safe place for ghost, please stay away if you're not a ghost. You get it? <i>safe</i> place for <i>ghosts</i>. Unless you're an adorable, cute, beautiful, pretty, hot, smart, perfect, manis and cantik-kind-of girl<span style={{fontSize: '8px'}}> then hmu lol, im joking. unless...</span> </h5>
                     <br/>
-                    <a href='/Howry/Ghost'>
-                    <Button variant='outline-dark'>See the ghosts</Button>
-                    </a>
+                    <Link to='/Howry/ghosts'>
+                        <Button variant='outline-dark'>See the ghosts</Button>
+                    </Link>
                     <br/><br/>
                     </Col>
                     <Col className='d-none d-lg-block'>
-                        <Image src="https://lh3.googleusercontent.com/proxy/oWKd-ijzoY2xpk8sJyDfRh80kCz8w-cmVOB-Nefaf_YwGJYM2EUEOwl-PHTkz87e68pQ2ZYPetZXEZ3uwQP0EzSA7WfH_MHehzYqIDKHXWeZmOfq2LoMTFzOqbq5Uore87eYtLQ17fFhzfwyiTDA" width={550}/>
+                        <Image src={ghost} width={550}/>
                     </Col>
                 </Row>
             </Container>
