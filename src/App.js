@@ -5,6 +5,7 @@ import Navigation from './components/Navigation'
 import Home from './components/Home'
 import About from './components/About'
 import Ghosts from './components/Ghosts'
+import Login from './components/Login'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 class App extends Component{
   render(){
@@ -15,6 +16,7 @@ class App extends Component{
             <Route exact path='/Howry/' component={Home}/>
             <Route path='/Howry/ghosts' component={Ghosts}/>
             <Route path='/Howry/about' component={About}/>
+            <Route path='/Howry/login' component={Login}/>
           </Switch>
           <Navigation />
         </Router>

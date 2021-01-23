@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container, Row, Col, Image, Nav } from 'react-bootstrap'
-import raihan from '../assets/raihan.jpeg'
+import raihan from '../assets/raihan.jpg'
 
 class About extends Component {
     render() {
@@ -19,7 +19,7 @@ class About extends Component {
                     <Row>
                         <Col className='text-center'>
                         <h5 className='text-muted'>Me</h5>
-                        <p>Born in <i>Lumajang,</i> 18 years old. Sometimes i just sit and daydream about what to do tomorrow. still got <b>zero</b> Pussy 'til now <span style={{ fontSize: '8px'}}> what a loser lmao</span></p>
+                        <p>Born in <i>Lumajang,</i> 18 years old. Sometimes i just sit and daydream about what to do tomorrow. still got <b>zero</b> pussy 'til now <span style={{ fontSize: '8px'}}> what a loser lmao</span>. Anyways, I am a <i>learning-to-be-a</i> fullstack developer and maybe another thing that involves creative works. Interested in Blender tho.</p>
                         <Nav className='justify-content-center'>
                             <Nav.Link href='https://github.com/horizonism' target='_blank'>Github</Nav.Link>
                             <Nav.Link href='https://steamcommunity.com/id/horizonism' target='_blank'>Steam</Nav.Link>
