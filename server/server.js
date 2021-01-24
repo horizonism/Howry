@@ -47,16 +47,4 @@ app.use(passport.session())
 
 // routes
 
-app.post('/log-in', (req, res, next) => {
-    passport.authenticate("local", {
-        successRedirect: '/',
-        failureRedirect: '/log-in'
-    })
-    next()
-})
-
-app.post('/register', (req, res, next) => {
-    Auth.create(req.body)
-        .then(() => console.log('Created'))
-    next()
-})
+app.use('/auth', require('./routers/auth'))

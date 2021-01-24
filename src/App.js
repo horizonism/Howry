@@ -6,6 +6,7 @@ import Home from './components/Home'
 import About from './components/About'
 import Ghosts from './components/Ghosts'
 import Login from './components/Login'
+import Register from './components/Register'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 class App extends Component{
   render(){
@@ -17,6 +18,7 @@ class App extends Component{
             <Route path='/Howry/ghosts' component={Ghosts}/>
             <Route path='/Howry/about' component={About}/>
             <Route path='/Howry/login' component={Login}/>
+            <Route path='/Howry/signup' component={Register}/>
           </Switch>
           <Navigation />
         </Router>

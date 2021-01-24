@@ -5,6 +5,7 @@ import ghost from '../assets/ghost.png'
 import { LinkContainer as Link } from 'react-router-bootstrap'
 
 class Home extends Component {
+    
     render(){
         return(
             <div>
