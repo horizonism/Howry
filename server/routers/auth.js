@@ -4,15 +4,10 @@ const passport = require('passport');
 
 const Auth = require('../models/Auth')
 
-router.post('/login', (req, res, next) => {
-    console.log(req.body)
-    passport.authenticate("local", {
-        successRedirect: '/',
-        failureRedirect: '/Howry/about'
-    })
-    res.send('Login')
-    next()
-})
+router.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/'
+} ))
 
 router.post('/register', (req, res, next) => {
     Auth.findOne({username: req.body.username}, (err, doc) => {
@@ -28,11 +23,11 @@ router.post('/register', (req, res, next) => {
 })
 
 router.get('/', (req, res, next) => {
-    console.log('Login')
+    res.send(req.user)
 })
 
 router.get('/logout', (req, res, next) => {
-    res.logout()
+    req.logout()
     res.redirect('/Howry')
 })
 

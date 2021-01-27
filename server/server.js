@@ -18,8 +18,7 @@ mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true})
 
 // middleware
 app.use(express.json())
-app.use(express.urlencoded({ extended:false }))
-app.use(session({secret:'cats', resave: true, saveUninitialized: false}))
+app.use(session({secret:'cats', resave: false, saveUninitialized: true}))
 passport.use(new localstrat((username, password, done) => {
     Auth.findOne({ username: username }, (err, user) => {
         if(err) {
@@ -44,6 +43,7 @@ passport.deserializeUser((id, done) =>{
 })
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(express.urlencoded({ extended:false }))
 
 // routes
 

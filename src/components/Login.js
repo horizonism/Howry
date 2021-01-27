@@ -8,13 +8,16 @@ class Login extends Component {
         super()
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            user: []
         }
     }
 
     componentDidMount(){
         axios.get('/auth')
-            .then((response) => this.setState({ test: response.data }))
+            .then((res) => this.setState({
+                user: res.data
+            }))
     }
 
     login = (e) => {
@@ -22,7 +25,7 @@ class Login extends Component {
             username: this.state.username,
             password: this.state.password
         }
-        axios.post('/auth/login', data)
+        axios.post('/auth/login/', data)
             .then(() => console.log('test lagi'))
     }
 
@@ -42,7 +45,7 @@ class Login extends Component {
                         <Col className='m-4'>
                             <Card className="m-5" >
                                 <Card.Title className="m-4">
-                                    <h1 className='display-3'>Log In</h1>
+                                    <h1 className='display-3'>Log In {this.state.user.username}</h1>
                                 </Card.Title>
                                 <Form className='m-4'>
                                     <Form.Group controlId="username">
