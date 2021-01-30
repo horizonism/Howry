@@ -9,15 +9,18 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            user: []
+            user: {}
         }
     }
 
     componentDidMount(){
         axios.get('/auth')
-            .then((res) => this.setState({
+            .then((res) => { this.setState({
                 user: res.data
-            }))
+            }) 
+            console.log(this.state.user)
+        
+        })
     }
 
     login = (e) => {
@@ -27,6 +30,12 @@ class Login extends Component {
         }
         axios.post('/auth/login/', data)
             .then(() => console.log('test lagi'))
+            .then(() => {
+                axios.get('/auth')
+                .then((res) => this.setState({
+                user: res.data
+            }))
+            })
     }
 
     handleChange = (e) => {
@@ -34,6 +43,11 @@ class Login extends Component {
         this.setState({
             [name]: value
         })
+    }
+
+    logout = () => {
+        axios.get('/auth/logout/')
+            .then(() => this.setState({ user: [] }))
     }
 
     render() {
@@ -46,6 +60,7 @@ class Login extends Component {
                             <Card className="m-5" >
                                 <Card.Title className="m-4">
                                     <h1 className='display-3'>Log In {this.state.user.username}</h1>
+                                    <a href='#home' onClick={this.logout}>Log out</a>
                                 </Card.Title>
                                 <Form className='m-4'>
                                     <Form.Group controlId="username">
