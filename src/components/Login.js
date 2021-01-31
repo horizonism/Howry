@@ -9,6 +9,7 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
+            isLoggedIn: false,
             user: {}
         }
     }
@@ -18,9 +19,16 @@ class Login extends Component {
             .then((res) => { this.setState({
                 user: res.data
             }) 
-            console.log(this.state.user)
-        
+            this.checkUser()
         })
+    }
+
+    checkUser = () => {
+        if(this.state.user){
+            this.setState({isLoggedIn: true})
+        }else{
+            this.setState({isLoggedIn: false})
+        }
     }
 
     login = (e) => {
@@ -32,9 +40,14 @@ class Login extends Component {
             .then(() => console.log('test lagi'))
             .then(() => {
                 axios.get('/auth')
-                .then((res) => this.setState({
-                user: res.data
-            }))
+                .then((res) => {
+                    this.setState({ 
+                        username: '',
+                        password: '',
+                        user: res.data
+                     })
+                    this.checkUser()
+                })
             })
     }
 
@@ -47,49 +60,57 @@ class Login extends Component {
 
     logout = () => {
         axios.get('/auth/logout/')
-            .then(() => this.setState({ user: [] }))
+            .then(() => this.setState({ user: [], isLoggedIn: false }))
     }
 
     render() {
-        return(
-            <div>
-                <Container>
-                    <br/><br/><br/><br/>
-                    <Row>
-                        <Col className='m-4'>
-                            <Card className="m-5" >
-                                <Card.Title className="m-4">
-                                    <h1 className='display-3'>Log In {this.state.user.username}</h1>
-                                    <a href='#home' onClick={this.logout}>Log out</a>
-                                </Card.Title>
-                                <Form className='m-4'>
-                                    <Form.Group controlId="username">
-                                        <Form.Label>Username</Form.Label>
-                                        <Form.Control type='name' placeholder='Enter Username' name='username' onChange={this.handleChange}/>
-                                        <Form.Text className='text-muted'>{this.state.username}</Form.Text>
-                                    </Form.Group>
-                                    <Form.Group controlId="password">
-                                        <Form.Label>Password</Form.Label>
-                                        <Form.Control type='password' placeholder='Enter Password' name='password' onChange={this.handleChange}/>
-                                    </Form.Group>
-                                    <Row style={{width: '300px'}}>
-                                        <Col>
-                                            <Button variant='dark' onClick={this.login}>Submit</Button>
-                                        </Col>
-                                        <Col>
-                                            <Link to='/Howry/signup'>
-                                                <Nav.Link>Sign Up?</Nav.Link>
-                                            </Link>
-                                        </Col>
-                                    </Row>
-                                </Form>
-                            </Card>
-                        </Col>
-                    </Row>
-                    <br/><br/><br/><br/>
-                </Container>
-            </div>
-        )
+        if(!this.state.isLoggedIn){
+            return(
+                <div>
+                    <Container>
+                        <br/><br/><br/><br/>
+                        <Row>
+                            <Col className='m-4'>
+                                <Card className="m-5" >
+                                    <Card.Title className="m-4">
+                                        <h1 className='display-3'>Log In</h1>
+                                    </Card.Title>
+                                    <Form className='m-4'>
+                                        <Form.Group controlId="username">
+                                            <Form.Label>Username</Form.Label>
+                                            <Form.Control type='name' placeholder='Enter Username' name='username' onChange={this.handleChange}/>
+                                            <Form.Text className='text-muted'>{this.state.username}</Form.Text>
+                                        </Form.Group>
+                                        <Form.Group controlId="password">
+                                            <Form.Label>Password</Form.Label>
+                                            <Form.Control type='password' placeholder='Enter Password' name='password' onChange={this.handleChange}/>
+                                        </Form.Group>
+                                        <Row style={{width: '300px'}}>
+                                            <Col>
+                                                <Button variant='dark' onClick={this.login}>Submit</Button>
+                                            </Col>
+                                            <Col>
+                                                <Link to='/Howry/signup'>
+                                                    <Nav.Link>Sign Up?</Nav.Link>
+                                                </Link>
+                                            </Col>
+                                        </Row>
+                                    </Form>
+                                </Card>
+                            </Col>
+                        </Row>
+                        <br/><br/><br/><br/>
+                    </Container>
+                </div>
+            )
+        }else{
+            return(
+                <div>
+                    <h1>hello, {this.state.user.username}</h1>
+                    <a href='#home' onClick={this.logout}>Log out</a>
+                </div>
+            )
+        }
     }
 }
 
