@@ -9,8 +9,10 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
+            message: '',
             isLoggedIn: false,
-            user: {}
+            user: {},
+            userMsg: []
         }
     }
 
@@ -20,6 +22,7 @@ class Login extends Component {
                 user: res.data
             }) 
             this.checkUser()
+            this.getMessages()
         })
     }
 
@@ -58,12 +61,29 @@ class Login extends Component {
         })
     }
 
+    handlePost = () => {
+        let data = {
+            name: this.state.user.username,
+            message: this.state.message
+        }
+        axios.post('/message/new', data)
+            .then(() => this.getMessages())
+    }
+
+    getMessages = () => {
+        axios.get('/message')
+            .then((res) => this.setState({
+                userMsg: res.data
+            }))
+    }
+
     logout = () => {
         axios.get('/auth/logout/')
             .then(() => this.setState({ user: [], isLoggedIn: false }))
     }
 
     render() {
+        let messages = this.state.userMsg.map(item => <li key={item._id}>{item.name} said "{item.message}"</li>);
         if(!this.state.isLoggedIn){
             return(
                 <div>
@@ -108,6 +128,14 @@ class Login extends Component {
                 <div>
                     <h1>hello, {this.state.user.username}</h1>
                     <a href='#home' onClick={this.logout}>Log out</a>
+                    <Form>
+                        <Form.Group controlId="message">
+                            <Form.Control type="name" name="message" placeholder="What's your message?" onChange={this.handleChange}/>
+                            <Button variant="dark" onClick={this.handlePost}>Post</Button>
+                        </Form.Group>
+                    </Form>
+                    <h3>All messages from users : </h3>
+                    {messages}
                 </div>
             )
         }

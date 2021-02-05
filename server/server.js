@@ -48,3 +48,4 @@ app.use(express.urlencoded({ extended:false }))
 // routes
 
 app.use('/auth', require('./routers/auth'))
+app.use('/message', require('./routers/message'))
