@@ -13,20 +13,22 @@ class Register extends Component {
         }
     }
 
-    register = () => {
-        if(this.state.password !== this.state.passwordVerify){
+    register = (e) => {
+        e.preventDefault()
+        if(this.state.username.length < 6 || this.state.password !== this.state.passwordVerify){
             this.setState({
                 username: '',
                 password: '',
                 passwordVerify: '',
             })
-            alert(`Password Doesn't match`)
+            alert(`Username is < 6 character Password Doesn't match`)
         }else{
             let data = {
                 username: this.state.username,
                 password: this.state.password,
             }
             axios.post('/auth/register', data)
+                .then(() => window.location.href = '/Howry/login' )
         }
     }
 
@@ -48,7 +50,7 @@ class Register extends Component {
                                 <Card.Title className="m-4">
                                     <h1 className='display-3'>Register</h1>
                                 </Card.Title>
-                                <Form className='m-4'>
+                                <Form onSubmit={this.register} className='m-4'>
                                     <Form.Group controlId="username">
                                         <Form.Label>Username</Form.Label>
                                         <Form.Control type='name' placeholder='Enter Username' name='username' onChange={this.handleChange} value={this.state.username}/>
@@ -65,7 +67,7 @@ class Register extends Component {
                                     </Form.Group>
                                     <Row style={{width: '500px'}}>
                                         <Col>
-                                            <Button variant='dark' onClick={this.register}>Submit</Button>
+                                            <Button variant='dark' type="submit">Submit</Button>
                                         </Col>
                                         <Col>
                                             <Link to='/Howry/login'>

@@ -61,7 +61,8 @@ class Login extends Component {
         })
     }
 
-    handlePost = () => {
+    handlePost = (e) => {
+        e.preventDefault()
         let data = {
             name: this.state.user.username,
             message: this.state.message
@@ -95,7 +96,7 @@ class Login extends Component {
                                     <Card.Title className="m-4">
                                         <h1 className='display-3'>Log In</h1>
                                     </Card.Title>
-                                    <Form className='m-4'>
+                                    <Form onSubmit={this.login} className='m-4'>
                                         <Form.Group controlId="username">
                                             <Form.Label>Username</Form.Label>
                                             <Form.Control type='name' placeholder='Enter Username' name='username' onChange={this.handleChange}/>
@@ -107,7 +108,7 @@ class Login extends Component {
                                         </Form.Group>
                                         <Row style={{width: '300px'}}>
                                             <Col>
-                                                <Button variant='dark' onClick={this.login}>Submit</Button>
+                                                <Button variant='dark' type='submit'>Submit</Button>
                                             </Col>
                                             <Col>
                                                 <Link to='/Howry/signup'>
@@ -128,13 +129,14 @@ class Login extends Component {
                 <div>
                     <h1>hello, {this.state.user.username}</h1>
                     <a href='#home' onClick={this.logout}>Log out</a>
-                    <Form>
+                    <Form onSubmit={this.handlePost}>
                         <Form.Group controlId="message">
                             <Form.Control type="name" name="message" placeholder="What's your message?" onChange={this.handleChange}/>
-                            <Button variant="dark" onClick={this.handlePost}>Post</Button>
+                            <Button variant="dark" type="submit">Post</Button>
                         </Form.Group>
                     </Form>
                     <h3>All messages from users : </h3>
+
                     {messages}
                 </div>
             )
