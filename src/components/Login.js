@@ -40,7 +40,6 @@ class Login extends Component {
             password: this.state.password
         }
         axios.post('/auth/login/', data)
-            .then(() => console.log('test lagi'))
             .then(() => {
                 axios.get('/auth')
                 .then((res) => {
